@@ -3,6 +3,7 @@ public class Main {
     public void main(String[] args) {
         Libro michiavelli = new Libro();
         michiavelli.autor = "michiavelli";
+        michiavelli.autor = "michiavelli";
         michiavelli.titulo = "prince";
         michiavelli.numPaginas=475;
         michiavelli.setValoracion(5);
@@ -25,6 +26,20 @@ public class Main {
         Juan.mostrarDatos();
         Maria.mostrarDatos();
 
+        CuentaBancaria Yassir = new CuentaBancaria();
+        Yassir.crearCuentaBancaria("Yassir");
+        Yassir.ingresar(1000);
+        Yassir.retirar(2000);
+        Yassir.retirar(500);
+        Yassir.mostrarInfo();
 
+        System.out.println("total de bicicletas " +Bicicleta.getBicicletasTotales());
+        Bicicleta Orbea = new Bicicleta();
+        Orbea.nuevaBicicleta("Orbea","BMX");
+        Bicicleta Trek = new Bicicleta();
+        Trek.nuevaBicicleta("Trek","Trek");
+        Bicicleta Specialized = new Bicicleta();
+        Specialized.nuevaBicicleta("Specialized","Trek");
+        System.out.println("total de bicicletas " +Bicicleta.getBicicletasTotales());
     }
 }

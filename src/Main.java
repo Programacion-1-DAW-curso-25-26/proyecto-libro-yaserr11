@@ -26,8 +26,8 @@ public class Main {
         Juan.mostrarDatos();
         Maria.mostrarDatos();
 
-        CuentaBancaria Yassir = new CuentaBancaria();
-        Yassir.crearCuentaBancaria("Yassir");
+        CuentaBancaria Yassir = new CuentaBancaria("Yassir");
+//        Yassir.setTitular("Yassir");
         Yassir.ingresar(1000);
         Yassir.retirar(2000);
         Yassir.retirar(500);

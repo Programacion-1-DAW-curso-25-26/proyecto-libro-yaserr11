@@ -7,7 +7,14 @@ public class Main {
         michiavelli.titulo = "prince";
         michiavelli.numPaginas=475;
         michiavelli.setValoracion(5);
+        michiavelli.setIsbn(10);
         michiavelli.mostrarInfo();
+        Libro dada = new Libro("DADO", "papa", 50, 10, 1);
+        Libro dado = new Libro("DADO", "papa", 50, 10, 9);
+
+        if (dado.equals(dada)) System.out.println("dada");
+        else System.out.println("no va");
+        System.out.println(michiavelli);
 
         Cancion popstar = new Cancion();
         popstar.setAutor("shaw");
@@ -26,7 +33,7 @@ public class Main {
         Juan.mostrarDatos();
         Maria.mostrarDatos();
 
-        CuentaBancaria Yassir = new CuentaBancaria("Yassir");
+        CuentaBancaria Yassir = new CuentaBancaria();
 //        Yassir.setTitular("Yassir");
         Yassir.ingresar(1000);
         Yassir.retirar(2000);

@@ -2,16 +2,51 @@ import java.util.Objects;
 
 public class Libro {
     String titulo;
-    String autor;
+    Autor autor;
     int numPaginas;
     int valoracion;
     private int isbn;
 
+    public int getIsbn() {
+        return isbn;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+
+
     public Libro(){
 
     }
-    public Libro (String titulo, String autor, int numPaginas, int valoracion, int isbn){
-
+    public Libro (String titulo, Autor autor, int numPaginas, int valoracion, int isbn){
+        this.titulo=titulo;
+        this.autor=autor;
+        this.numPaginas=numPaginas;
+        this.valoracion=valoracion;
+        this.isbn=isbn;
     }
 
     public void setIsbn(int isbn) {
@@ -28,6 +63,17 @@ public class Libro {
     }
 
     @Override
+    public String toString() {
+        return "Libro{" +
+                "autor=" + autor +
+                ", titulo='" + titulo + '\'' +
+                ", numPaginas=" + numPaginas +
+                ", valoracion=" + valoracion +
+                ", isbn=" + isbn +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Libro libro = (Libro) o;
@@ -39,14 +85,4 @@ public class Libro {
         return Objects.hashCode(isbn);
     }
 
-    @Override
-    public String toString() {
-        return "Libro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", numPaginas=" + numPaginas +
-                ", valoracion=" + valoracion +
-                ", isbn=" + isbn +
-                '}';
-    }
 }

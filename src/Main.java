@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class Main {
 //        if (libro2.equals(libro1)) System.out.println("libro1");
 //        else System.out.println("no va");
 //        System.out.println(michiavelli);
-        ArrayList <Autor> autores = new ArrayList<>();
+        HashSet<Autor> autores = new HashSet<>();
         ArrayList <Libro> biblioteca = new ArrayList<>();
 //        biblioteca.add(libro1);
 //        biblioteca.remove(libro1);
@@ -44,10 +45,22 @@ public class Main {
                 case 'd':
                     eliminarISBN(biblioteca, sc);
                     break;
-                case 'e':
+                case 'f':
+                    anyadirAutor(autores, sc);
+                    break;
+                case 'g':
+                    buscarPorAutor(autores, sc);
+                    break;
+//                case 'h':
+//                    eliminarPorAutor(autores, sc);
+//                    break;
+//                case 'i':
+//                    mostrarAutores(autores);
+//                    break;
+                case 'j':
                     vaciarLista(biblioteca);
                     break;
-                case 's':
+                case 'e':
                     System.out.println("Adios");
                     break;
                 default:
@@ -96,6 +109,28 @@ public class Main {
 //        Bicicleta Specialized = new Bicicleta();
 //        Specialized.nuevaBicicleta("Specialized","Trek");
 //        System.out.println("total de bicicletas " +Bicicleta.getBicicletasTotales());
+    }
+
+    private void buscarPorAutor(HashSet<Autor> autores, Scanner sc) {
+        String nombreAutor;
+        String nacionalidadAutor;
+        System.out.println("Dime el nombre del autor");
+        nombreAutor = sc.nextLine();
+        System.out.println("Dime la nacionalidad del autor");
+        nacionalidadAutor = sc.nextLine();
+
+    }
+
+    private Autor anyadirAutor(HashSet<Autor> autores, Scanner sc) {
+        System.out.println("Dime el nombre del autor");
+        String nombre = sc.nextLine();
+        System.out.println("Dime el nacionalidad del autor");
+        String nacionalidad = sc.nextLine();
+        System.out.println("Dime el estilo del autor");
+        String estilo = sc.nextLine();
+        Autor autorlib = new Autor(nacionalidad,nombre,estilo);
+        autores.add(autorlib);
+        return autorlib;
     }
 
     private void eliminarISBN(ArrayList<Libro> biblioteca, Scanner sc) {
@@ -161,25 +196,23 @@ public class Main {
                 b. Mostrar Libros
                 c. Buscar por ISBN.
                 d. Eliminar por ISBN.
+                f. Anyadir Autor.
+                g. Buscar Por Autor.
+                h. Eliminar por Autor.
+                i. Mostrar Autores
                 e. Salir
                 Seleccione opción:
                 """);
     }
 
-    private void anyadirLibro(ArrayList<Libro> biblioteca, Scanner sc,ArrayList<Autor> autores) {
+    private void anyadirLibro(ArrayList<Libro> biblioteca, Scanner sc,HashSet<Autor> autores) {
         String titulo;
-        Autor autor;
         int numPaginas;
         int valoracion;
         int isbn;
         System.out.println("Dime el titulo");
         titulo = sc.nextLine();
-        System.out.println("Dime el nombre del autor");
-        String nombre = sc.nextLine();
-        System.out.println("Dime el nacionalidad del autor");
-        String nacionalidad = sc.nextLine();
-        Autor autorlib = new Autor(nombre,nacionalidad);
-        autores.add(autorlib);
+       Autor autor = anyadirAutor(autores, sc);
         System.out.println("Dime el numero de paginas");
         numPaginas = sc.nextInt();
         sc.nextLine();
@@ -189,7 +222,17 @@ public class Main {
         System.out.println("Dame el valoracion");
         valoracion = sc.nextInt();
         sc.nextLine();
-        Libro nuevo = new Libro(titulo,autorlib,numPaginas,valoracion,isbn);
+
+        Libro nuevo = new Libro(autor,numPaginas,titulo,valoracion,isbn);
         biblioteca.add(nuevo);
     }
+
+//    private static Autor buscarAutor(HashSet<Autor> autores, String nombre, String nacionalidad) {
+//        for (Autor autor: autores){
+//            if (autor.getNombre().equals(nombre) && autor.getNacionalidad().equals(nacionalidad)){
+//                return autor;
+//            }
+//        }
+//        return null;
+//    }
 }

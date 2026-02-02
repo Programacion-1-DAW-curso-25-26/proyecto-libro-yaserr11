@@ -1,17 +1,40 @@
-public class Autor {
-    private String nombre;
-    private String nacionalidad;
+import java.util.Objects;
 
-    public Autor(String nacionalidad, String nombre) {
-        this.nacionalidad = nacionalidad;
-        this.nombre = nombre;
+public class Autor extends Persona {
+    private String estilo;
+
+    public Autor(String nacionalidad, String nombre, String estilo) {
+        super(nacionalidad, nombre);
+        this.estilo = estilo;
     }
 
     @Override
     public String toString() {
         return "Autor{" +
-                "nacionalidad='" + nacionalidad + '\'' +
-                ", nombre='" + nombre + '\'' +
+                super.toString()+"\',"+
+                "estilo='" + estilo + '\'' +
                 '}';
+    }
+
+    public String getEstilo() {
+        return estilo;
+    }
+
+    public void setEstilo(String estilo) {
+        this.estilo = estilo;
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Autor autor = (Autor) o;
+        return Objects.equals(estilo, autor.estilo) && super.equals(autor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(estilo);
     }
 }
